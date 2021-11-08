@@ -77,7 +77,6 @@ export class Router {
     let pageObject = {};
     pageObject["state_page"] = page;
     if((statePopped == false) && (window.location.hash != hash)) history.pushState(pageObject, "", window.location+hash);
-    console.log("arman");
     this[page]();
   }
 }
