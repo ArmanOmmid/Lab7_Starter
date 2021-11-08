@@ -67,10 +67,17 @@ export class Router {
      *     and URL + hash to history
      *  4. Finally, call the stored function for the given page
      */
-    if(!this.navigate){
+    if(!this[page]){
       console.log("Error"); 
       return; 
     }
-    
+    let hash;
+    if(page == "home") hash = "";
+    else hash = "#" + page;
+    let pageObject = {};
+    pageObject["state_page"] = page;
+    if((statePopped == false) && (window.location.hash != hash)) history.pushState(pageObject, "", window.location+hash);
+    console.log("arman");
+    this[page]();
   }
 }
